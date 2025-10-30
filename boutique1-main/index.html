@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sarees & Silk -- Timeless Indian Elegance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --primary-bg: #fffbf9;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --accent-color: #ff6f91; /* Pink/Rose */
+  --secondary-accent: #ffae6d; /* Orange/Peach */
+  --nav-link-color: #555;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.08);
+  --radius-card: 16px;
+  --radius-button: 25px;
+  --border-radius: 12px;
+  --grad-color-1: #fff9f6; 
+  --grad-color-2: #fffbf9; 
+  --grad-color-3: #fef0ef; 
+}
+
+/* -------- NEW: Logo Floating Animation Keyframes -------- */
+@keyframes float {
+  0% { transform: translate(0, 0px); }
+  50% { transform: translate(0, -3px); }
+  100% { transform: translate(0, 0px); }
+}
+
+/* -------- Background Animation Keyframes -------- */
+@keyframes background-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------- PRODUCT CARD NEW ANIMATION KEYFRAMES -------- */
+@keyframes border-pulse {
+  0% { box-shadow: 0 0 0 0 var(--accent-color), var(--shadow-light); }
+  50% { box-shadow: 0 0 0 4px rgba(255, 111, 145, 0.4), var(--shadow-light); }
+  100% { box-shadow: 0 0 0 0 var(--accent-color), var(--shadow-light); }
+}
+
+/* -------- BUY BUTTON (Color Pulse Animation) -------- */
+@keyframes color-pulse {
+  0% { background: var(--accent-color); }
+  50% { background: var(--secondary-accent); box-shadow: 0 0 10px var(--accent-color); }
+  100% { background: var(--accent-color); }
+}
+
+/* -------- BOUTIQUE SLOGAN (Text Shimmer/Glow) -------- */
+@keyframes text-shimmer {
+  0%, 100% { text-shadow: 0 0 5px rgba(255, 111, 145, 0.5); }
+  50% { text-shadow: 0 0 10px rgba(255, 174, 109, 0.8), 0 0 20px rgba(255, 111, 145, 0.5); }
+}
+
+/* -------- Subtle Confetti/Shimmer Keyframes (Slow Vertical Movement) -------- */
+@keyframes confetti-rain {
+  0% { transform: translateY(-100%) scale(1); opacity: 0.5; }
+  100% { transform: translateY(100%) scale(0.5); opacity: 0; }
+}
+
+/* -------- Large Light Sweep Keyframes (Horizontal Highlight) -------- */
+@keyframes light-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* -------- NEW: Product Card Shine Keyframes -------- */
+/* ------------------------------------------------------------------ */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-30deg); }
+  100% { transform: translateX(400%) skewX(-30deg); }
+}
+
+/* -------- GLOBAL STYLES (UPDATED) -------- */
+body {
+  margin: 0;
+  background: linear-gradient(-45deg, var(--grad-color-1), var(--grad-color-2), var(--grad-color-3), var(--primary-bg));
+  background-size: 400% 400%;
+  animation: background-shift 25s ease infinite; 
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* -------- NEW BACKGROUND EFFECT STYLES -------- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 
+    10vw 5vh 2px 2px rgba(255, 111, 145, 0.2), 
+    30vw 30vh 1px 1px rgba(255, 174, 109, 0.3), 
+    60vw 60vh 3px 3px rgba(255, 255, 255, 0.4), 
+    80vw 10vh 2px 2px rgba(255, 111, 145, 0.1),
+    10vw 90vh 1px 1px rgba(255, 174, 109, 0.2),
+    95vw 40vh 3px 3px rgba(255, 255, 255, 0.3);
+  animation: confetti-rain 60s linear infinite;
+}
+
+main {
+  position: relative; 
+}
+
+main::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  pointer-events: none;
+  z-index: 99;
+  mix-blend-mode: soft-light;
+  animation: light-sweep 30s linear infinite;
+}
+
+
+/* -------- HEADER -------- */
+header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-light);
+  padding: 1rem 2rem;
+}
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* --- UPDATED LOGO STYLES --- */
+.brand {
+  display: flex; /* Makes logo and text align horizontally */
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.brand img {
+  height: 60px; /* Increased height for visibility */
+  display: block;
+}
+.brand-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 1px;
+}
+/* --- END UPDATED LOGO STYLES --- */
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font-weight: 500;
+}
+.nav-links a,
+.nav-links .prebooking-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-button);
+  line-height: 1;
+  transition: color 0.2s, background 0.3s, transform 0.2s;
+}
+.nav-links a { color: var(--nav-link-color); }
+.nav-links a:hover { color: var(--accent-color); }
+
+/* -------- BUY BUTTON (Color Pulse Animation) -------- */
+.nav-links .prebooking-btn {
+  background: var(--accent-color);
+  color: #fff;
+  animation: color-pulse 4s infinite ease-in-out;
+}
+.nav-links .prebooking-btn:hover {
+  background: var(--secondary-accent);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+/* -------- BOUTIQUE SLOGAN (Text Shimmer/Glow) -------- */
+.boutique-slogan {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin: 2rem auto 0.5rem;
+  animation: text-shimmer 5s infinite alternate;
+}
+
+/* -------- HERO SLIDER (UPDATED FOR PARALLAX) -------- */
+.hero-section {
+  position: relative;
+  max-width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out, transform 0.1s linear; /* Add transform transition for smooth parallax */
+}
+.hero-image.active { opacity: 1; z-index: 1; }
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10; /* Ensure dots are above images */
+}
+.carousel-dots span {
+  width: 12px; height: 12px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.carousel-dots span.active { background: var(--accent-color); }
+
+/* -------- SEARCH BAR -------- */
+.search-bar-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+.search-bar {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-button);
+  padding: 8px 12px;
+  box-shadow: var(--shadow-light);
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.search-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.search-bar input {
+  flex-grow: 1;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+}
+.search-bar input::placeholder {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+/* -------- HEADINGS -------- */
+h2 {
+  text-align: center;
+  margin: 3rem 0 1.5rem;
+  color: var(--accent-color);
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ */
+/* -------- UPDATED PRODUCT CARD STYLES AND ANIMATIONS -------- */
+/* ------------------------------------------------------------------ */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.product-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-light); 
+  padding: 1.5rem;
+  text-align: center;
+  position: relative; 
+  overflow: hidden; 
+  transition: transform 0.3s, box-shadow 0.5s ease-in-out;
+  z-index: 1; 
+}
+
+/* Pulsing Border Glow and Lift on Card Hover */
+.product-card:hover {
+  transform: translateY(-5px);
+  animation: border-pulse 2s infinite ease-in-out; 
+}
+
+/* NEW: Shine Effect Pseudo-element */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transform: translateX(-100%) skewX(-30deg);
+}
+
+/* Trigger the shine animation on hover */
+.product-card:hover::before {
+    opacity: 1;
+    animation: shine 0.75s ease-in-out 0s 1;
+}
+
+
+.product-image-container {
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative; /* Added for sticker positioning */
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  cursor: zoom-in;
+  transition: transform 0.4s, box-shadow 0.4s; 
+}
+
+/* Subtle Zoom and Shadow on Image Hover */
+.product-card:hover .product-image {
+  transform: scale(1.05); 
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2); 
+}
+
+/* Title setup for new animation */
+.product-title { 
+  font-size: 1.25rem; 
+  font-weight: 600; 
+  margin: 0; 
+  position: relative; 
+  display: inline-block;
+  transition: color 0.3s, transform 0.3s;
+}
+
+/* Color Shift and slight 'Bounce' up on Title Hover */
+.product-card:hover .product-title {
+  color: var(--secondary-accent);
+  transform: translateY(-2px);
+}
+
+/* Remove the old ::after sparkle/underline effect */
+.product-card .product-title::after {
+  content: none;
+}
+
+/* -------- BUY BUTTON -------- */
+.buy-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(45deg, var(--secondary-accent), var(--accent-color));
+  color: white;
+  padding: 0.9rem 0;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.buy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* NEW: SOLD STICKER STYLES */
+.sold-sticker {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.85); /* Red with transparency */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(10deg); /* Slightly tilted for visual interest */
+    z-index: 5; /* Ensure it's above the image */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-card.sold .product-image {
+    filter: grayscale(70%) blur(2px); /* Dim and blur sold images */
+    transition: filter 0.3s ease-in-out;
+}
+
+.product-card.sold .buy-button {
+    background: #ccc; /* Grey out button */
+    cursor: not-allowed;
+    pointer-events: none; /* Prevent clicks */
+    box-shadow: none;
+}
+.product-card.sold .buy-button:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* -------- TESTIMONIAL / ABOUT US -------- */
+.testimonial-section {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+.testimonial-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-light);
+  display: inline-block;
+}
+
+/* Glassmorphism for About/Testimonial Section */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #222;
+  max-width: 900px;
+  margin: 2rem auto;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* -------- FOOTER -------- */
+.site-footer {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-light);
+  margin-top: 3rem;
+  padding: 2.5rem 2rem 1rem;
+  color: var(--nav-link-color);
+  font-size: 0.95rem;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.footer-brand img { height: 50px; margin-bottom: 0.5rem; }
+.footer-brand p { color: var(--accent-color); font-weight: 600; font-size: 1.1rem; }
+.footer-links h4,
+.footer-contact h4 { margin-bottom: 0.8rem; font-size: 1.1rem; font-weight: 600; color: var(--accent-color); }
+.footer-links a,
+.footer-contact a { display: block; color: var(--nav-link-color); margin-bottom: 0.4rem; transition: color 0.3s; }
+.footer-links a:hover,
+.footer-contact a:hover { color: var(--accent-color); }
+.social-icons { margin-top: 0.8rem; display: flex; gap: 1rem; }
+.social-icons a { font-size: 1.5rem; color: var(--nav-link-color); transition: color 0.3s, transform 0.3s; }
+.social-icons a:hover { color: var(--accent-color); transform: scale(1.2); }
+.footer-bottom { text-align: center; border-top: 1px solid #eee; margin-top: 2rem; padding-top: 1rem; font-size: 0.85rem; color: #777; }
+
+/* -------- IMAGE MODAL (BASE & CAROUSEL) -------- */
+.img-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 10px; background: rgba(0,0,0,0.95); z-index: 10000; overflow: auto; visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility .25s ease; }
+.img-modal.show { visibility: visible; opacity: 1; }
+.img-modal-content { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 0; }
+.img-modal-close { 
+  position: absolute; 
+  top: 18px; 
+  right: 22px; 
+  font-size: 34px; 
+  line-height: 1; 
+  color: #fff; 
+  cursor: pointer; 
+  background: transparent; 
+  border: none; 
+  padding: 6px 10px; 
+  z-index: 10020; 
+}
+.img-modal-caption { margin-top: 12px; color: #fff; font-size: 0.95rem; text-align: center; max-width: 90%; }
+.modal-content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10010;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  border-radius: 50%;
+  line-height: 1;
+}
+.carousel-control:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.7);
+}
+.carousel-control.prev { left: 20px; }
+.carousel-control.next { right: 20px; }
+
+/* ---------------------------------------------------- */
+/* -------- MOBILE OPTIMIZATIONS (Max Width 768px) -------- */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+  /* GENERAL ADJUSTMENTS */
+  body {
+    font-size: 14px; 
+    animation: none !important;
+  }
+  body::before {
+    display: none;
+  }
+  main::after {
+    display: none;
+  }
+
+  /* HEADER */
+  header {
+    padding: 1rem 1rem; 
+  }
+  .top-nav {
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 1rem;
+  }
+  .brand {
+    flex-basis: 100%; 
+    justify-content: center; /* Center logo and text on mobile */
+    margin-bottom: 1rem;
+  }
+  .brand img {
+    height: 40px; /* Slightly smaller logo on mobile */
+  }
+  .brand-text {
+    font-size: 1.4rem; /* Smaller text on mobile */
+  }
+  .nav-links {
+    gap: 0.8rem; 
+    justify-content: space-around;
+    flex-grow: 1;
+    font-size: 0.9rem;
+  }
+  .nav-links a,
+  .nav-links .prebooking-btn {
+    padding: 6px 10px; 
+  }
+
+  /* BOUTIQUE SLOGAN */
+  .boutique-slogan {
+    font-size: 1.5rem; 
+    letter-spacing: 3px;
+    margin: 1.5rem auto 0.5rem;
+  }
+
+  /* HERO SECTION */
+  .hero-section {
+    height: 300px; 
+  }
+  /* Disable Parallax on mobile for performance */
+  .hero-image {
+    transform: none !important; 
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  /* SEARCH BAR */
+  .search-bar-container {
+    padding: 0 1rem;
+    margin: 1.5rem auto;
+  }
+  .search-bar {
+    padding: 6px 10px;
+  }
+
+  /* HEADINGS */
+  h2 {
+    font-size: 1.7rem; 
+    margin: 2rem 0 1rem;
+  }
+
+  /* PRODUCT GRID */
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .product-card {
+    padding: 1rem;
+    animation: none !important; 
+    transform: none !important; 
+  }
+  .product-card:hover {
+    transform: none !important; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  }
+  .product-card::before {
+    display: none;
+  }
+  .product-image {
+    height: 200px; 
+    transform: none !important; 
+    box-shadow: none !important;
+  }
+  .product-card:hover .product-image {
+    transform: scale(1.02) !important;
+  }
+  .product-title {
+    font-size: 1rem;
+    transform: none !important; 
+  }
+  .buy-button {
+    padding: 0.7rem 0; 
+  }
+  /* Sold sticker on mobile */
+  .sold-sticker {
+      padding: 6px 10px;
+      font-size: 0.8em;
+  }
+
+
+  /* ABOUT/TESTIMONIAL */
+  .testimonial-section {
+    margin: 3rem auto;
+    padding: 1rem;
+  }
+  .glass-card {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  .footer-container {
+    grid-template-columns: 1fr; 
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .footer-brand {
+    margin-bottom: 0;
+  }
+  .footer-links h4,
+  .footer-contact h4 {
+    margin-top: 1rem;
+  }
+  .social-icons {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-nav">
+    <a href="#" class="brand">
+      <img src="hb logo final.png" alt="Logo">
+      <span class="brand-text">Hema's Boutique</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#new-arrivals">NEW ARRIVALS</a>
+      <a href="#collections">SHOP SAREES</a>
+      <a href="#testimonial-card">ABOUT US</a>
+      <a href="prebooking.html" class="prebooking-btn">PREBOOKING</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="search" id="product-search" placeholder="Search for sarees...">
+    </div>
+  </div>
+  <section class="hero-section" id="heroSection">
+      <img src="saree.jpg" alt="Image 1" class="hero-image active">
+      <img src="boutique.png" alt="Image 2" class="hero-image active">
+      <div class="carousel-dots"></div>
+    </div>
+  </section>
+
+  <section id="collections">
+    <h2>OUR CURATED COLLECTIONS</h2>
+    <div class="product-grid" id="productsGrid"></div>
+  </section>
+
+  <section id="testimonial-card" class="testimonial-section">
+    <div class="testimonial-card glass-card">
+      <p>At <b>Hema's Boutique</b>, we celebrate the timeless elegance of Indian sarees. Our curated collection brings together traditional craftsmanship and contemporary designs, offering sarees that are perfect for every occasion – from festive celebrations to everyday grace.
+      Each piece in our boutique is carefully selected to ensure premium quality, vibrant colors, and exquisite detailing, reflecting the rich heritage of India’s textile artistry. Whether you love the regal charm of Kanchipuram silks, the intricate beauty of Banarasi weaves, or modern chic organza and net sarees, we have something special just for you.
+      <br><b>Our mission is simple:</b> to make the beauty of Indian sarees accessible to every woman, delivered with convenience and care. Step into our boutique and discover the saree that speaks to your style and story.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<div id="imgModal" class="img-modal" aria-hidden="true" role="dialog">
+  <button id="imgModalClose" class="img-modal-close" aria-label="Close image">&times;</button>
+  <div class="modal-content-wrapper">
+    <button id="prevBtn" class="carousel-control prev" aria-label="Previous image">&lt;</button>
+    <button id="nextBtn" class="carousel-control next" aria-label="Next image">&gt;</button>
+
+    <img id="imgModalImg" class="img-modal-content" src="" alt="">
+    <div id="imgModalCaption" class="img-modal-caption"></div>
+  </div>
+</div>
+
+<div id="paymentModal" class="img-modal" aria-hidden="true" role="dialog">
+  <div style="background: #fff; padding: 2rem; border-radius: 12px; max-width: 400px; width: 90%; text-align: left; position: relative;">
+    <button id="paymentModalClose" class="img-modal-close" aria-label="Close">&times;</button>
+    <h3 id="paymentModalHeader" style="margin-bottom:1rem; color:#222;">Enter Your Details</h3>
+    
+    
+    <form id="addressForm">
+      <label for="name">Name</label>
+      <input type="text" id="customerName" required style="width:100%; margin-bottom:0.5rem; padding:8px; border-radius:6px; border:1px solid #ccc;">
+      
+      <label for="phone">Phone</label>
+      <input type="tel" id="customerPhone" required style="width:100%; margin-bottom:0.5rem; padding:8px; border-radius:6px; border:1px solid #ccc;">
+      
+      <label for="address">Address</label>
+      <textarea id="customerAddress" required style="width:100%; margin-bottom:0.5rem; padding:8px; border-radius:6px; border:1px solid #ccc;" rows="3"></textarea>
+      
+      <div style="display: flex; gap: 10px; margin-top: 1rem;">
+        <button type="button" id="cancelOrderBtn" style="flex-grow: 1; padding: 10px; background: #eee; color: #777; border: 1px solid #ccc; border-radius: var(--radius-button); font-weight: 600;">Cancel</button>
+        <button type="submit" id="proceedToPayBtn" style="flex-grow: 1; padding: 10px; background:var(--accent-color); color:#fff; border:none; border-radius:var(--radius-button); font-weight:600;">Proceed to Pay</button>
+      </div>
+
+      
+    </form>
+    
+    <button type="button" id="backToFormBtn" style="width: 100%; padding: 10px; background: var(--secondary-accent); color: #fff; border: none; border-radius: var(--radius-button); font-weight: 600; margin-top: 1rem; display: none;">Back to Details</button>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="hb logo final.png" alt="Hems Boutique Logo">
+      <p>Timeless Elegance in Every Drape</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">New Arrivals</a>
+      <a href="#collections">Collections</a>
+      <a href="#about-us">About Us</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:hemaboutique.collections@gmail.com">hemaboutique.collections@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919123518766">+91 91235 18766</a></p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61581166523764" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/hemas_boutique2022/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/919123518766" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Hems Boutique. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* -------- HERO SLIDER -------- */
+const slides = document.querySelectorAll(".hero-image");
+const dotsContainer = document.querySelector(".carousel-dots");
+
+let currentIndex = 0;
+slides.forEach((_, i) => {
+  const dot = document.createElement("span");
+  dot.dataset.index = i;
+  if (i === 0) dot.classList.add("active");
+  dotsContainer.appendChild(dot);
+});
+const dots = dotsContainer.querySelectorAll("span");
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    dots[i].classList.remove("active");
+  });
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+  currentIndex = index;
+}
+
+dots.forEach(dot => {
+  dot.addEventListener("click", () => showSlide(+dot.dataset.index));
+});
+
+setInterval(() => {
+  let nextIndex = (currentIndex + 1) % slides.length;
+  showSlide(nextIndex);
+}, 4000);
+
+/* ------------------------------------------------------------------ */
+/* -------- HERO SECTION PARALLAX SCROLL EFFECT -------- */
+/* ------------------------------------------------------------------ */
+
+const heroSection = document.getElementById('heroSection');
+const heroImages = document.querySelectorAll('.hero-image');
+
+function applyParallax() {
+    if (window.innerWidth <= 768) return; // Disable on mobile
+
+    const scrollPos = window.scrollY;
+    const heroTop = heroSection.offsetTop;
+    const heroHeight = heroSection.offsetHeight;
+    
+    // Only apply effect when the hero is visible
+    if (scrollPos > heroTop + heroHeight || scrollPos < 0) {
+        return;
+    }
+
+    const movement = scrollPos * 0.3; 
+    
+    heroImages.forEach(image => {
+        image.style.transform = `translateY(${movement}px)`;
+    });
+}
+
+window.addEventListener('scroll', applyParallax);
+window.addEventListener('resize', applyParallax);
+applyParallax();
+
+/* -------- PRODUCTS DATA STRUCTURE (UPDATED WITH 'status' FIELD) -------- */
+const products = [
+  { id: 1, name: "Fancy saree", price: 650, images: ["images/khhappa 1.png"], status: "" },
+  { id: 2, name: "Fancy saree", price: 650, images: ["images/khhappa 2.png", "images/fs blue1.jpg", "images/fs blue2.jpg", "images/fs blue3.jpg"], status: "" }, /* MARKED AS SOLD */
+  { id: 3, name: "Fancy saree", price: 650, images: ["images/khhappa 3.png"], status: "" },
+  { id: 4, name: "Fancy saree", price: 650, images: ["images/khhappa 4.png"], status: "" }, 
+  { id: 5, name: "Fancy saree", price: 650, images: ["images/khhappa 5.png"], status: "" }, /* MARKED AS SOLD */
+  { id: 6, name: "Fancy saree", price: 650, images: ["images/khhappa 6.png"], status: "" },
+  { id: 7, name: "Dollar", price: 550, images: ["images/dollar 1.jpg"], status: "" },
+  { id: 8, name: "Jecaurd saree", price: 650, images: ["images/js 1.jpg"], status: "" },
+  { id: 9, name: "Jecaurd saree", price: 650, images: ["images/js 2.jpg", "images/je green1.jpg", "images/je green2.jpg", "images/je green3.jpg", "images/je green4.jpg", "images/je green5.jpg"], status: "" },
+  { id: 10, name: "Jecaurd saree", price: 650, images: ["images/js 3.jpg"], status: "" },
+  { id: 11, name: "Georgette Saree", price: 588, images: ["images/paith 1.png"], status: "" },
+  { id: 12, name: "Georgette Saree", price: 588, images: ["images/paith 2.png"], status: "" },
+  { id: 13, name: "Georgette Saree", price: 588, images: ["images/paith 3.png"], status: "" }, /* MARKED AS SOLD */
+  { id: 14, name: "Georgette Saree", price: 588, images: ["images/paith 4.png", "images/geo blue1.jpg"], status: "" },
+  { id: 15, name: "Georgette Saree", price: 588, images: ["images/paith 5.png"], status: "" },
+  { id: 16, name: "Georgette Saree", price: 588, images: ["images/paith 6.png"], status: "" },
+  { id: 17, name: "Madhubala", price: 899, images: ["images/madhubala 1.jpg", "images/ma pink1.jpg", "images/ma pink2.jpg", "images/ma pink3.jpg"], status: "" },
+  { id: 18, name: "Madhubala", price: 899, images: ["images/madhubala 2.jpg", "images/ma green1.jpg"], status: "" },
+  { id: 19, name: "Madhubala", price: 899, images: ["images/madhubala 3.png"], status: "" },
+  { id: 20, name: "Solar silk", price: 950, images: ["images/solar 1.jpg", "images/ss ex1.jpg", "images/ss ex2.jpg"], status: "" },
+  { id: 21, name: "Solar silk", price: 950, images: ["images/solar 2.jpg", "images/ss blue1.jpg", "images/ss blue2.jpg", "images/ss blue3.jpg"], status: "" },
+  { id: 22, name: "Solar silk", price: 950, images: ["images/solar 3.jpg"], status: "" },
+  { id: 23, name: "Fancy Banarasi", price: 799, images: ["images/nx 1.jpg"], status: "" },
+  { id: 24, name: "Fancy Banarasi", price: 799, images: ["images/nx 2.jpg"], status: "" },
+  { id: 25, name: "Fancy Banarasi", price: 799, images: ["images/nx 3.png"], status: "" },
+  { id: 26, name: "Fancy Banarasi", price: 799, images: ["images/nx 4.png"], status: "" },
+  { id: 27, name: "Fancy cut work saree", price: 750, images: ["images/fcw 1.png"], status: "sold" }, /* MARKED AS SOLD */
+  { id: 28, name: "Kota tissue saree", price: 580, images: ["images/burberry 1.png","images/kota blue1.jpg"], status: "" },
+  { id: 29, name: "Kota tissue saree", price: 580, images: ["images/burberry 2.png","images/kota pink1.jpg"], status: "" },
+  { id: 30, name: "Kota tissue saree", price: 580, images: ["images/burberry 3.png", "images/kota brown1.jpg", "images/kota brown2.jpg"], status: "" },
+  { id: 31, name: "Kota tissue saree", price: 580, images: ["images/burberry 4.png","images/kota green1.jpg"], status: "" },
+  { id: 32, name: "Dotla jecard", price: 620, images: ["images/dotla 1.png"], status: "" },
+  { id: 33, name: "Dotla jecard", price: 620, images: ["images/dotla 2.png"], status: "" },
+  { id: 34, name: "Dotla jecard", price: 620, images: ["images/dotla 3.png"], status: "" },
+  { id: 35, name: "Dotla jecard", price: 620, images: ["images/dotla 4.png", "images/dotla yell1.jpg", "images/dotla yell2.jpg", "images/dotla yell3.jpg"], status: "" },
+  { id: 36, name: "Dotla jecard", price: 620, images: ["images/dotla 5.png"], status: "" },
+  { id: 37, name: "Dotla jecard", price: 620, images: ["images/dotla 6.png"], status: "" },
+  { id: 38, name: "Fancy cut work saree", price: 750, images: ["images/fcw 2.png"], status: "" },
+  { id: 39, name: "Fancy cut work saree", price: 750, images: ["images/fcw 3.png"], status: "" },
+  { id: 40, name: "Fancy cut work saree", price: 750, images: ["images/fcw 4.png"], status: "" },
+  { id: 41, name: "Fancy cut work saree", price: 750, images: ["images/fcw 5.png"], status: "" },
+  { id: 42, name: "Fancy cut work saree", price: 750, images: ["images/fcw 6.png"], status: "" },
+  { id: 43, name: "Fancy Banarasi", price: 799, images: ["images/fb 6.png", "images/fb blue1.jpg", "images/fb blue2.jpg"], status: "" },
+  { id: 44, name: "Dola silk saree", price: 650, images: ["images/dola 1.jpg"], status: "" },
+  { id: 45, name: "Dola silk saree", price: 650, images: ["images/dola 2.jpg"], status: "" },
+  { id: 46, name: "Dola silk saree", price: 650, images: ["images/dola 3.jpg"], status: "" },
+  { id: 47, name: "Dola silk saree", price: 650, images: ["images/dola 4.jpg"], status: "" },
+  { id: 48, name: "Dola silk saree", price: 650, images: ["images/dola 5.jpg", "images/dola brown1.jpg"], status: "" },
+  { id: 49, name: "Semi silk pattu saree", price: 1200, images: ["images/semi sk 1.jpg","images/ssp green1.jpg"], status: "" },
+  { id: 50, name: "Semi silk pattu saree", price: 1200, images: ["images/semi sk 2.jpg","images/ssp blue1.jpg"], status: "" },
+  { id: 51, name: "Semi silk pattu saree", price: 1200, images: ["images/semi sk 3.jpg","images/ssp brown1.jpg"], status: "" },
+  { id: 52, name: "Semi silk pattu saree", price: 999, images: ["images/ss 1.png","images/ssp pink1.jpg","images/ssp pink2.jpg"], status: "" },
+  { id: 53, name: "Semi silk pattu saree", price: 999, images: ["images/ss 2.png","images/ssp dark1.jpg"], status: "" },
+  { id: 54, name: "Semi silk pattu saree", price: 999, images: ["images/ss 3.png"], status: "" },
+  { id: 55, name: "Semi soft silk saree", price: 850, images: ["images/semi soft 1.png","images/sss blue1.jpg","images/sss blue2.jpg","images/sss blue3.jpg","images/sss blue4.jpg"], status: "" },
+  { id: 56, name: "Semi soft silk saree", price: 850, images: ["images/semi soft 2.png","images/sss green1.jpg"], status: "" },
+  { id: 57, name: "Semi soft silk saree", price: 850, images: ["images/semi soft 3.png"], status: "" },
+
+];
+
+
+const productsGrid = document.getElementById("productsGrid");
+
+// Function to render product cards (used for initial load and search)
+function renderProducts(productArray) {
+  productsGrid.innerHTML = '';
+  productArray.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    // Add 'sold' class to the card if status is 'sold'
+    if (p.status === "sold") {
+        card.classList.add("sold");
+    }
+
+    let buyButtonHtml = `<button class="buy-button" data-id="${p.id}">Buy Now</button>`;
+    if (p.status === "sold") {
+        buyButtonHtml = `<button class="buy-button" data-id="${p.id}" disabled>Sold Out</button>`;
+    }
+
+
+    card.innerHTML = `
+      <div class="product-image-container">
+        <img src="${p.images[0]}" alt="${p.name}" class="product-image">
+        ${p.status === "sold" ? '<span class="sold-sticker">Sold</span>' : ''}
+      </div>
+      <h3 class="product-title">${p.name}</h3>
+      <p>₹${p.price}</p>
+      ${buyButtonHtml}
+    `;
+    productsGrid.appendChild(card);
+  });
+}
+
+// Initial product grid rendering
+renderProducts(products);
+
+/* -------- IMAGE MODAL CAROUSEL LOGIC -------- */
+const imgModal = document.getElementById("imgModal");
+const imgModalImg = document.getElementById("imgModalImg");
+const imgModalCaption = document.getElementById("imgModalCaption");
+const imgModalClose = document.getElementById("imgModalClose");
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+let currentImageIndex = 0;
+let currentProductImages = []; 
+
+function updateModalImage() {
+  imgModalImg.src = currentProductImages[currentImageIndex];
+  const isOneImage = currentProductImages.length <= 1;
+  prevBtn.style.display = isOneImage ? 'none' : 'block';
+  nextBtn.style.display = isOneImage ? 'none' : 'block';
+}
+
+function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % currentProductImages.length;
+  updateModalImage();
+}
+
+function showPrevImage() {
+  currentImageIndex = (currentImageIndex - 1 + currentProductImages.length) % currentProductImages.length;
+  updateModalImage();
+}
+
+document.body.addEventListener("click", function(e) {
+  if (e.target.classList.contains("product-image")) {
+    const productId = e.target.closest('.product-card').querySelector('.buy-button').dataset.id;
+    const product = products.find(p => p.id == productId);
+    
+    // Only open modal if the product is NOT sold
+    if (product && product.images && product.images.length > 0 && product.status !== "sold") {
+      currentProductImages = product.images;
+      currentImageIndex = 0; 
+      
+      updateModalImage();
+      imgModalCaption.textContent = product.name;
+      imgModal.classList.add("show");
+      imgModal.setAttribute("aria-hidden", "false");
+    }
+  }
+});
+
+imgModalClose.addEventListener("click", () => {
+    imgModal.classList.remove("show");
+    imgModal.setAttribute("aria-hidden", "true");
+});
+
+imgModal.addEventListener("click", e => { 
+    if(e.target === imgModal) {
+        imgModal.classList.remove("show");
+        imgModal.setAttribute("aria-hidden", "true");
+    }
+});
+
+prevBtn.addEventListener('click', showPrevImage);
+nextBtn.addEventListener('click', showNextImage);
+
+
+/* -------- UPI + ADDRESS FORM INTEGRATION (UPDATED WITH QR) -------- */
+const paymentModal = document.getElementById('paymentModal');
+const paymentModalClose = document.getElementById('paymentModalClose');
+const addressForm = document.getElementById('addressForm');
+const cancelOrderBtn = document.getElementById('cancelOrderBtn');
+const proceedToPayBtn = document.getElementById('proceedToPayBtn'); // NEW
+const qrCodeContainer = document.getElementById('qrCodeContainer'); // NEW
+const qrCodeAmount = document.getElementById('qrCodeAmount'); // NEW
+const showQrCodeBtn = document.getElementById('showQrCodeBtn'); // NEW
+const backToFormBtn = document.getElementById('backToFormBtn'); // NEW
+const paymentModalHeader = document.getElementById('paymentModalHeader'); // NEW
+
+let selectedProduct = null;
+
+function openPaymentModal(product) {
+  selectedProduct = product;
+  paymentModal.classList.add('show');
+  paymentModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  
+  // Reset to form view
+  addressForm.style.display = 'block';
+  qrCodeContainer.style.display = 'none';
+  showQrCodeBtn.style.display = 'block';
+  backToFormBtn.style.display = 'none';
+  paymentModalHeader.textContent = 'Enter Your Details';
+  
+  // Update button text with price
+  proceedToPayBtn.textContent = `Proceed to Pay ₹${selectedProduct.price} (UPI App)`;
+  qrCodeAmount.textContent = selectedProduct.price; // Set price for QR view
+}
+function closePaymentModal() {
+  paymentModal.classList.remove('show');
+  paymentModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.body.addEventListener("click", function(e) {
+  if (e.target.classList.contains("buy-button") && !e.target.disabled) {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    const product = products.find(p => p.id == id);
+    if (!product) return;
+    openPaymentModal(product);
+  }
+});
+paymentModalClose.addEventListener('click', closePaymentModal);
+paymentModal.addEventListener('click', e => { if(e.target === paymentModal) closePaymentModal(); });
+cancelOrderBtn.addEventListener('click', closePaymentModal);
+
+
+// --- QR Code View Handlers ---
+showQrCodeBtn.addEventListener('click', function() {
+    // Switch to QR Code View
+    addressForm.style.display = 'none';
+    qrCodeContainer.style.display = 'block';
+    showQrCodeBtn.style.display = 'none';
+    backToFormBtn.style.display = 'block';
+    paymentModalHeader.textContent = 'Scan & Pay';
+});
+
+backToFormBtn.addEventListener('click', function() {
+    // Switch back to Form View
+    addressForm.style.display = 'block';
+    qrCodeContainer.style.display = 'none';
+    showQrCodeBtn.style.display = 'block';
+    backToFormBtn.style.display = 'none';
+    paymentModalHeader.textContent = 'Enter Your Details';
+});
+// --- End QR Code View Handlers ---
+
+
+addressForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!selectedProduct) return;
+
+  const name = document.getElementById('customerName').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+  const address = document.getElementById('customerAddress').value.trim();
+  if (!name || !phone || !address) return alert('Please fill all fields.');
+
+  // This is the UPI Deep Link logic for the 'Proceed to Pay' button
+  const productName = selectedProduct.name;
+  const upiLink = `upi://pay?pa=${encodeURIComponent("hemarobin.jai@okhdfcbank")}&pn=${encodeURIComponent(name)}&am=${selectedProduct.price}&cu=INR&tn=${encodeURIComponent(productName + " | Shipping: " + address)}`;
+  window.location.href = upiLink;
+  // Note: We use a slight delay for closing the modal to allow the deep link to be processed by the system.
+  setTimeout(closePaymentModal, 2000); 
+});
+
+/* -------- SEARCH FUNCTIONALITY -------- */
+const searchInput = document.getElementById('product-search');
+searchInput.addEventListener('input', function() {
+  const term = searchInput.value.toLowerCase();
+  const filteredProducts = products.filter(p => p.name.toLowerCase().includes(term));
+  renderProducts(filteredProducts);
+});
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// ---------- FIREBASE CONFIG ----------
+const firebaseConfig = {
+  apiKey: "AIzaSyCCyJ0v_NABTc8wo1cuYntsF3CfBvAV8rQ",
+  authDomain: "boutique-4008a.firebaseapp.com",
+  databaseURL: "https://boutique-4008a-default-rtdb.firebaseio.com",
+  projectId: "boutique-4008a",
+  storageBucket: "boutique-4008a.firebasestorage.app",
+  messagingSenderId: "344569319009",
+  appId: "1:344569319009:web:086ac74efe6927a109a420"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+
+
+// Close modal
+paymentModalClose.addEventListener('click', () => paymentModal.classList.remove('show'));
+cancelOrderBtn.addEventListener('click', () => paymentModal.classList.remove('show'));
+
+// ---------- HANDLE PAYMENT ----------
+addressForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const address = document.getElementById('customerAddress').value.trim();
+
+    if(!name || !phone || !address) return alert("Please fill all details!");
+
+    // Create a dummy order amount (or get from selected product)
+    const amount = selectedProduct.price * 100; // Amount in paise (₹500)
+    
+    const options = {
+        key: "rzp_live_RYnTyqDemcyUro", // Replace with your Razorpay Key
+        amount: amount,
+        currency: "INR",
+        name: "Hema's Boutique",
+        description: "Saree Purchase",
+        handler: function(response){
+            // Save order details to Firebase
+            const orderId = "order_" + new Date().getTime();
+            db.ref('orders/' + orderId).set({
+                name: name,
+                phone: phone,
+                address: address,
+                amount: amount/100,
+                paymentId: response.razorpay_payment_id,
+                timestamp: new Date().toISOString()
+            }).then(() => {
+                alert("Payment Successful! Order Placed.");
+                paymentModal.classList.remove('show');
+                addressForm.reset();
+            }).catch(err => {
+                console.error(err);
+                alert("Error saving order data!");
+            });
+        },
+        prefill: {
+            name: name,
+            contact: phone
+        },
+        theme: { color: "#ff6f91" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+});
+// // Update all product prices to 1
+// products.forEach(product => {
+//   product.price = 1;
+// });
+
+// console.log(products);
+
+</script>
+</body>
+</html>

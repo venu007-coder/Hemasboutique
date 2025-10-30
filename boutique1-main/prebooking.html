@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hema's Boutique - Order Sarees</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* 1. Global Styles and Typography */
+body {
+  font-family: 'Cormorant Garamond', serif;
+  /* Use a background that allows for shifting colors and is applied over the whole viewport */
+  background: linear-gradient(120deg, #fef8f8, #fdf3f8); 
+  background-size: 300% 300%; /* Important for the shifting animation */
+  animation: gradient-shift 20s ease infinite alternate; /* APPLY BACKGROUND ANIMATION */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Heading Style */
+h2 {
+  color: #c71585; /* Deeper, richer pink for contrast */
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+  animation: slideInDown 0.8s ease-out; 
+}
+
+/* 3. Form Container - The Star */
+form {
+  max-width: 650px;
+  width: 90%;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 3.5rem 2.5rem;
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255,105,180,0.1),
+              0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  /* APPLY FORM FLOAT ANIMATION */
+  animation: wavy-float 6s ease-in-out infinite alternate, 
+             slideInUp 0.7s ease-out; /* Keep initial slide-in */
+}
+form:hover {
+  transform: translateY(-8px); /* Override float for a more pronounced lift on hover */
+  box-shadow: 0 25px 50px rgba(255,105,180,0.2),
+              0 10px 20px rgba(0,0,0,0.08);
+  animation-play-state: paused; /* Pause subtle float on hover */
+}
+
+/* 4. Labels (Keeping the original fadeIn for labels) */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #c71585;
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards; 
+}
+
+/* 5. Input Fields - Staggered Slide-In */
+.form-group-container > * { 
+  opacity: 0;
+  animation: slideInRight 0.6s ease-out forwards; 
+}
+
+/* Staggering the animation delay for all pairs of label and input */
+/* Label 1 (Name) */
+.form-group-container label:nth-of-type(1) { animation-delay: 0.1s; }
+.form-group-container input:nth-of-type(1) { animation-delay: 0.2s; }
+/* Label 2 (Phone) */
+.form-group-container label:nth-of-type(2) { animation-delay: 0.3s; }
+.form-group-container input:nth-of-type(2) { animation-delay: 0.4s; }
+/* Label 3 (Email) */
+.form-group-container label:nth-of-type(3) { animation-delay: 0.5s; }
+.form-group-container input:nth-of-type(3) { animation-delay: 0.6s; }
+/* Label 4 (Saree Type) */
+.form-group-container label:nth-of-type(4) { animation-delay: 0.7s; }
+.form-group-container select { animation-delay: 0.8s; }
+/* Label 5 (Color) */
+.form-group-container label:nth-of-type(5) { animation-delay: 0.9s; }
+.form-group-container input:nth-of-type(4) { animation-delay: 1.0s; }
+/* Label 6 (Count) */
+.form-group-container label:nth-of-type(6) { animation-delay: 1.1s; }
+.form-group-container input:nth-of-type(5) { animation-delay: 1.2s; }
+/* Label 7 (Address) */
+.form-group-container label:nth-of-type(7) { animation-delay: 1.3s; }
+.form-group-container textarea { animation-delay: 1.4s; }
+
+
+input, select, textarea {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 1.8rem;
+  border-radius: 18px; 
+  border: 2px solid #f0e0e0; 
+  font-size: 17px;
+  height: auto;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #ff6f91;
+  background-color: #fffafa; 
+  box-shadow: 0 0 15px rgba(255,111,145,0.3);
+  outline: none;
+}
+textarea {
+  resize: vertical; 
+  min-height: 100px;
+  padding-top: 15px;
+}
+
+/* 6. Price Preview & Summary */
+#pricePreview {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c71585;
+  margin: 1.5rem 0 1rem 0;
+  transition: color 0.3s, transform 0.3s;
+}
+#pricePreview:not(:empty) {
+  animation: pulse 0.6s ease-out;
+}
+
+/* 7. Summary Card - NEW HOVER EFFECT */
+#summaryCard {
+  background: #fff8fb; 
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 2rem;
+  font-size: 17px;
+  border-left: 4px solid #ff6f91;
+  box-shadow: 0 4px 12px rgba(255,111,145,0.1);
+  animation: slideInUp 0.7s ease-out forwards;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  animation-delay: 1.6s; /* Delay to appear after the inputs */
+}
+#summaryCard:hover {
+  background-color: #fce4ec; 
+  box-shadow: 0 8px 16px rgba(255,111,145,0.2);
+}
+#summaryCard .row {
+  display: flex;
+  justify-content: space-between; 
+  padding: 10px 0;
+  border-bottom: 1px dashed #f0e0e0; 
+}
+#summaryCard .row:last-child {
+  border-bottom: none;
+  font-size: 1.1rem;
+}
+#summaryCard .row span.label {
+  color: #c71585;
+  font-weight: 600;
+}
+#summaryCard .row span.value {
+  color: #000;
+  font-weight: 500;
+}
+
+/* 8. Button - Slight delay for smooth entrance */
+button {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(90deg, #ff6f91, #e64a78); 
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(255,111,145,0.4);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 1.8s; /* Delay to appear after the summary card */
+}
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255,111,145,0.5);
+  background: linear-gradient(90deg, #e64a78, #ff6f91); 
+}
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 20px rgba(255,111,145,0.3);
+}
+
+/* 9. Small Print */
+p {
+  color: #888;
+  margin-top: 2rem;
+}
+
+/* 10. Keyframe Animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn { 
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* NEW BACKGROUND ANIMATION: Shifts the gradient slowly */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* NEW FORM ANIMATION: Subtle floating effect */
+@keyframes wavy-float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.005); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+
+/* 11. Media Queries for Responsiveness */
+@media(max-width: 700px){
+  body { align-items: flex-start; }
+  form { padding: 2rem 1.5rem; margin: 2rem 1rem; }
+  h2 { font-size: 2.2rem; margin-top: 1rem; }
+  input, select, textarea { margin-bottom: 1.2rem; padding: 12px 15px; }
+  button { font-size: 1.1rem; padding: 15px; }
+}
+</style>
+</head>
+<body>
+
+<section id="order-form">
+  <form id="sareeOrderForm">
+    <h2>Place Your Order</h2>
+    
+    <div class="form-group-container">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+      <label for="email">Gmail ID:</label>
+      <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+
+      <label for="sareeType">Saree Type:</label>
+      <select id="sareeType" name="sareeType" required>
+        <option value="">Select Type</option>
+        <option value="Soft Georgette Saree">Soft Georgette Saree</option>
+        <option value="Dola Jecaurd Saree">Dola Jecaurd Saree</option>
+        <option value="Fancy Saree">Fancy Saree</option>
+        <option value="Fancy Cut Work Saree">Fancy Cut Work Saree</option>
+        <option value="Fancy Banarasi">Fancy Banarasi</option>
+        <option value="Dola Silk Saree">Dola Silk Saree</option>
+        <option value="Kota Tissue Saree">Kota Tissue Saree</option>
+        <option value="Semi Silk Pattu Saree">Semi Silk Pattu Saree</option>
+        <option value="Semi Silk Pattu saree">Semi Silk Pattu saree</option>
+        <option value="Semi Soft Silk Saree">Semi Soft Silk Saree</option>
+        <option value="Solar Silk Saree">Solar Silk Saree</option>
+        <option value="Jecaurd Saree">Jecaurd Saree</option>
+        <option value="Semi fancy Saree">Semi fancy Saree</option>
+        <option value="Semi Soft Pattu Saree">Semi Soft Pattu Saree</option>
+        <option value="Semi Mysore Silk Saree">Semi Mysore Silk Saree</option>
+      </select>
+
+      <label for="color">Colour:</label>
+      <input type="text" id="color" name="color" required placeholder="e.g., Red, Blue">
+
+      <label for="count">Count:</label>
+      <input type="number" id="count" name="count" required min="1" value="1">
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" required placeholder="Enter your full delivery address"></textarea>
+    </div>
+    
+    <div id="pricePreview">Total: ₹0</div>
+
+    <div id="summaryCard">
+      <div class="row"><span class="label">Saree: </span><span class="value">-</span></div>
+      <div class="row"><span class="label">Colour: </span><span class="value">-</span></div>
+      <div class="row"><span class="label">Quantity: </span><span class="value">-</span></div>
+      <div class="row"><span class="label">Total: </span><span class="value">₹0</span></div>
+    </div>
+
+    <p style="text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: #777;">
+    <b>Delivery within 15 days after prebooking</b>
+    </p>
+
+
+    <button type="button" id="payButton">Select Saree Type to Pay</button>
+  </form>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  const sareePrices = {
+    "Soft Georgette Saree":588,
+    "Dola Jecaurd Saree":620,
+    "Fancy Saree":650,
+    "Fancy Cut Work Saree":750,
+    "Fancy Banarasi":799,
+    "Dola Silk Saree":650,
+    "Kota Tissue Saree":580,
+    "Semi Silk Pattu Saree":1200,
+    "Semi Silk Pattu saree":999,
+    "Semi Soft Silk Saree":850,
+    "Solar Silk Saree":950,
+    "Jecaurd Saree":650,
+    "Semi fancy Saree":720,
+    "Semi Soft Pattu Saree":650,
+    "Semi Mysore Silk Saree":699
+  };
+
+  const sareeSelect = document.getElementById("sareeType");
+  const payButton = document.getElementById("payButton");
+  const countInput = document.getElementById("count");
+  const colorInput = document.getElementById("color");
+  const pricePreview = document.getElementById("pricePreview");
+  const summaryCard = document.getElementById("summaryCard");
+
+  function updatePayButton() {
+    const sareeType = sareeSelect.value;
+    const count = parseInt(countInput.value) || 1;
+    const color = colorInput.value || "-";
+    
+    if (sareeType && sareePrices[sareeType]) {
+      const total = sareePrices[sareeType] * count;
+      pricePreview.textContent = `Total: ₹${total.toLocaleString('en-IN')}`;
+      payButton.textContent = `Pay ₹${total.toLocaleString('en-IN')}`;
+
+      summaryCard.innerHTML = `
+        <div class="row"><span class="label">Saree: </span><span class="value">${sareeType}</span></div>
+        <div class="row"><span class="label">Colour: </span><span class="value">${color}</span></div>
+        <div class="row"><span class="label">Quantity: </span><span class="value">${count}</span></div>
+        <div class="row"><span class="label">Total: </span><span class="value">₹${total.toLocaleString('en-IN')}</span></div>
+      `;
+    } else {
+      payButton.textContent = "Select Saree Type to Pay";
+      pricePreview.textContent = "Total: ₹0";
+      summaryCard.innerHTML = `
+        <div class="row"><span class="label">Saree: </span><span class="value">-</span></div>
+        <div class="row"><span class="label">Colour: </span><span class="value">-</span></div>
+        <div class="row"><span class="label">Quantity: </span><span class="value">-</span></div>
+        <div class="row"><span class="label">Total: </span><span class="value">₹0</span></div>
+      `;
+    }
+  }
+
+  // Update summary dynamically
+  sareeSelect.addEventListener("change", updatePayButton);
+  countInput.addEventListener("input", updatePayButton);
+  colorInput.addEventListener("input", updatePayButton);
+
+  // Razorpay + backend integration
+  payButton.addEventListener("click", async function() {
+    const form = document.getElementById("sareeOrderForm");
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const sareeType = sareeSelect.value;
+    const color = colorInput.value;
+    const count = parseInt(countInput.value) || 1;
+    const address = document.getElementById("address").value;
+    const total = sareePrices[sareeType] * count;
+
+    try {
+      // 1️⃣ Create Razorpay order
+      const orderResponse = await axios.post("http://localhost:5000/create-order", {
+        amount: total * 100, // amount in paise
+        currency: "INR"
+      });
+
+      const options = {
+        key: "rzp_live_RYnTyqDemcyUro", // replace with your Razorpay key
+        amount: orderResponse.data.amount,
+        currency: orderResponse.data.currency,
+        name: "Hema's Boutique",
+        description: `${sareeType} x${count}`,
+        order_id: orderResponse.data.id,
+        handler: async function(response) {
+          // 2️⃣ Save prebooking in backend
+          await axios.post("http://localhost:5000/save-prebooking", {
+            name, phone, email, sareeType, color, count, total, address, paymentId: response.razorpay_payment_id
+          });
+
+          alert("Payment successful and prebooking saved!");
+          form.reset();
+          updatePayButton();
+        },
+        prefill: { name, email, contact: phone },
+        theme: { color: "#e64a78" }
+      };
+
+      const rzp1 = new Razorpay(options);
+      rzp1.open();
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong with payment or prebooking!");
+    }
+  });
+
+  // Initial setup
+  updatePayButton();
+</script>
+</body>
+</html>

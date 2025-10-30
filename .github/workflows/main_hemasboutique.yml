@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -21,14 +21,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: '20.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
-      
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -51,13 +51,13 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_48F4CD5373C3432CA3DA9E239140E6D7 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_733512B6AB71406486ACC3A1A9034508 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_443BBC9D8EE24E33A4419B159E7F8D12 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_327D957EC7CB465E8D6350496E59A64C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A609EE5A96C84330BF1F74435B694227 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_155A3120D7084C158B7B8C4E76DA3C7A }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'hemasboutique'
           slot-name: 'Production'
